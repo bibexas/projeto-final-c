@@ -1,25 +1,31 @@
 #include <stdio.h>
-#include "menu.h"
+#include <stdlib.h>
+#include <ncurses.h>
+#include <string.h>
+#include "board.h"
+#include "game.h"
 
-int main ()
+void start_game(void)
 {
-    show_menu();
-    int opcao;
-    scanf ("%d", &opcao);
-    getchar();
-    switch(opcao)
-    {
-        case 1:
-            printf("Iniciando o jogo...\n");
-            break;
-        case 2:
-            printf("Leaderboard\n");
-            break;
-        case 3:
-            printf("Até logo!\n");
-            return 0;
-        default:
-            printf("Opcao invalida");
-            return 0;
-        }
-}
+    int yMax, xMax;
+    int height = 18;
+    int width = 36;
+    getmaxyx(stdscr, yMax, xMax);
+
+    WINDOW *game_win = derwin(stdscr, height, width, (yMax - height) / 2, (xMax - width) / 2);
+    if (game_win == NULL)
+        return;
+
+    box(game_win, 0, 0);
+    mvwprintw(game_win, 1, 2, "Usa as setas para controlar o jogo!");
+    wrefresh(game_win);
+
+    keypad(game_win, TRUE);
+
+    int ch;
+    while ((ch = wgetch(game_win)) != 'q') {
+
+    }
+
+    delwin(game_win);
+}    

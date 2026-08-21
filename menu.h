@@ -1,6 +1,8 @@
 #ifndef MENU_H
 #define MENU_H
 
-void show_menu(void);
+#include <ncurses.h>
+
+int show_menu(void);
 
 #endif

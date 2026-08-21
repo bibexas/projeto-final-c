@@ -1,30 +1,17 @@
 #include <stdio.h>
+#include <ncurses.h>
+#include "board.h"
 
-void init_board(char board[4][4])
+
+WINDOW *init_board(void)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            board[i][j] = ' ';
-        }
-    }
+    int xMax, yMax;
+    getmaxyx(stdscr, yMax, xMax);
+
+    WINDOW *board_win = newwin(BOARD_ROWS, BOARD_COLS, (yMax / 2) - (BOARD_ROWS/2), (xMax / 2) - (BOARD_COLS/2));
+    box(board_win, 0, 0);
+    wrefresh(board_win);
+
+    return board_win;
 }
 
-void print_board(char board[4][4])
-{
-    printf("\n");
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            printf(" %c ", board[i][j]);
-            if (j < 2)
-                printf("|");
-        }
-        printf("\n");
-        if (i < 2)
-            printf("---+---+---+---\n");
-    }
-    printf("\n");
-}
