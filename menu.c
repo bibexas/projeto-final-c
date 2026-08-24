@@ -14,9 +14,9 @@ int show_menu(void)
 
     box(win, 0, 0);
     mvwprintw(win, 1, 2, "2048");
-    mvwprintw(win, 5, 2, "1. Jogar");
-    mvwprintw(win, 9, 2, "2. Leaderboard");
-    mvwprintw(win, 13, 2, "3. Sair");
+    mvwprintw(win, 8, 2, "1. Jogar");
+    mvwprintw(win, 14, 2, "2. Leaderboard");
+    mvwprintw(win, 20, 2, "3. Sair");
     wrefresh(win);
 
     int choice = 0;

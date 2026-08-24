@@ -32,4 +32,24 @@ Próximo passo planeado:
 - Criar a estrutura dos blocos e atribuir diferentes cores consoante o número que representam
 - Programar o jogo em si: o aparecimento dos blocos em espaços vazios após um movimento de jogo e a junção dos blocos para criar novos 
 
-Linhas de código escritas: 150
+Linhas de código escritas: 150 - 200
+
+##Sessão 3 - 24/08/2026
+
+Funcionalidades implementadas hoje:
+- Coloquei a janela secundária, relativa ao jogo em si, dentro da janela principal
+- Criei o tabuleiro do jogo, com uma dimensão de 4 x 4
+- Criei os blocos e atribui-lhes diferentes cores
+- Associei probabilidades aos blocos de 2 (90%) e de 4 (10%)
+
+Maior dificuldade encontrada e como resolvi:
+- Tive alguma dificuldade a atribuir probabilidades aos blocos, no entanto, após ver alguns tutoriais na internet, consegui resolver
+- Estou de momento com dificuldade em que as cores atribuídas apareçam no ecrã, ainda não percebi exatamente onde está o erro, se no código ou se o deveria referenciar no game ou no main de forma diferente
+
+Próximo passo planeado:
+- Resolver o problema das cores
+- Tratar da gameplay em si, para que os controlos comecem a funcionar
+- Criar a verificação de vitória
+- Criar o score 
+
+Linhas de código escritas: 200 - 220

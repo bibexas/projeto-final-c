@@ -3,6 +3,7 @@
 #include "menu.h"
 #include "board.h"
 #include "game.h"
+#include "block.h"
 
 int main(void)
 {
@@ -11,13 +12,19 @@ int main(void)
     noecho();
     curs_set(0);
     start_color();
-    refresh();
+    block_init_colours();
+
+    WINDOW *parent = init_board();
+    keypad(parent, TRUE);
+    werase(parent);
+    box(parent, 0, 0);
+    wrefresh(parent);
 
     int opcao = show_menu();
 
     if (opcao == 1)
     {
-        start_game();
+        start_game(parent);
     }
     else if (opcao == 2)
     {
