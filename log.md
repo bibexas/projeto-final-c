@@ -59,7 +59,14 @@ Linhas de código escritas: 200 - 220
 Funcionalidades implementadas hoje:
 - Correção de bugs: cores, formato dos blocos (havia sobreposição em relação ao tabuleiro principal)
 - Limpei o código e organizei-o de forma a ser mais fácil continuar a desenvolver
+- Escrevi a função que permite que os blocos fundam os seus valores
 
 Maior dificuldade encontrada e como resolvi:
+- A função da junção dos blocos foi, sem dúvida, a que tive mais dificuldades até hoje, tive de a fazer de forma a que os blocos que se juntassem fossem só os de valor igual e que já estivessem na linha, além de ser necessário limpar aqueles que, após o movimento, ficariam vazios. Para resolver, fiz pesquisa na internet e no youtube até encontrar uma solução que funcionasse e conseguisse adaptar ao meu jogo.
 
 Próximo passo planeado:
+- Acabar o grid.c, sendo que atualmente me falta definir os controlos para que seja possível fazer essa junção de blocos
+- Adicionar o score
+- Adicionar a verificação de vitória
+
+Linhas de código escritas: 64
