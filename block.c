@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <string.h>
 
 #define BLOCK_ROWS 4
@@ -62,6 +63,7 @@ void block_init_colours(void)
 void block_draw(WINDOW *win, int row, int col, int value)
 {
     int height, width, cell_height, cell_width;
+    int inner_h, inner_w;
     int y, x, text_y, text_x;
     char text[6];
 
@@ -70,10 +72,12 @@ void block_draw(WINDOW *win, int row, int col, int value)
         return;
 
     getmaxyx(win, height, width);
-    y = row * height / BLOCK_ROWS;
-    x = col * width / BLOCK_COLS;
-    cell_height = (row + 1) * height / BLOCK_ROWS - y;
-    cell_width = (col + 1) * width / BLOCK_COLS - x;
+    inner_h = height - 1;
+    inner_w = width - 1;
+    y = row * inner_h / BLOCK_ROWS + 1;
+    x = col * inner_w / BLOCK_COLS + 1;
+    cell_height = (row + 1) * inner_h / BLOCK_ROWS - y;
+    cell_width = (col + 1) * inner_w / BLOCK_COLS - x;
     if (cell_height < 1 || cell_width < 1)
         return;
 
@@ -91,6 +95,7 @@ void block_draw(WINDOW *win, int row, int col, int value)
     if (has_colors())
         wattroff(win, COLOR_PAIR(block_colour(value)));
 }
+
 
 const int *block_values_get(size_t *count)
 {

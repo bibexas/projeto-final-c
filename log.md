@@ -53,3 +53,13 @@ Próximo passo planeado:
 - Criar o score 
 
 Linhas de código escritas: 200 - 220
+
+##Sessão 4 - 27/08/2026
+
+Funcionalidades implementadas hoje:
+- Correção de bugs: cores, formato dos blocos (havia sobreposição em relação ao tabuleiro principal)
+- Limpei o código e organizei-o de forma a ser mais fácil continuar a desenvolver
+
+Maior dificuldade encontrada e como resolvi:
+
+Próximo passo planeado:
