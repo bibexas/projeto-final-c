@@ -72,8 +72,9 @@ int move_left(int board [4][4])
     {
         pontos = pontos + merge_line(board[row]);
     }
-    return pontos
+    return pontos;
 }
+
 
 void invert_line(int linha [4])
 {

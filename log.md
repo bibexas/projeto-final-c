@@ -76,11 +76,14 @@ Linhas de código escritas: 64
 Funcionalidades implementadas hoje:
 - Fiz as funções que permitem ao jogador controlar o tabuleiro utilizando as setas do computador
 - Liguei as funções ao jogo em si e criei as condições para o terminal verificar, após cada movimento, se algo tinha mudado de forma a acrescentar um bloco random no board
+- Escrevi o README
+- Adicionei o score, em vez de fazer uma nova função inclui-o dentro da que controla os movimentos e depois fiz o cálculo do mesmo 
 
 Maior dificuldade encontrada e como resolvi:
-- 
+- Tive uma grande dificuldade em perceber como criar o score, mas, após alguma pesquisa, encontrei um método simples e organizado de o fazer, incluindo-o dentro da função do movimento, o que simplificou bastante o processo
 
 Próximo passo planeado:
--
+- Criar a verificação de vitória e um efeito para quando se vencer o jogo e outro para quando se for derrotado
+- Criar o highscore e um file txt. onde estes fiquem guardados (se calhar com a data, estou indecisa entre isso ou só com o nome)
 
-Linhas de código escritas:
+Linhas de código escritas: 200 - 230

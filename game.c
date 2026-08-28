@@ -8,6 +8,7 @@
 #include "block.h"
 #include "grid.h"
 
+
 void start_game(WINDOW *parent)
 {
     int pYMAX, pXMAX;
@@ -29,11 +30,13 @@ void start_game(WINDOW *parent)
     int starty = (pYMAX - height) / 2;
     int startx = (pXMAX - width) / 2;
 
+
     WINDOW *game_win = derwin(parent, height, width, starty, startx);
     if (game_win == NULL)
         return;
 
     int board[4][4] = {{0}};
+    int score = 0;
     srand((unsigned int)time(NULL));
     add_random_block(board);
     add_random_block(board);
@@ -69,19 +72,19 @@ void start_game(WINDOW *parent)
         }
         if (ch == KEY_LEFT)
         {
-            move_left(board);
+            score = score + move_left(board);
         }
         else if (ch == KEY_RIGHT)
         {
-            move_right(board);
+            score = score + move_right(board);
         }
         else if (ch == KEY_UP)
         {
-            move_up(board);
+            score = score + move_up(board);
         }
         else if (ch == KEY_DOWN)
         {
-            move_down(board);
+            score = score + move_down(board);
         }
 
         int mudou = 0;
@@ -114,7 +117,14 @@ void start_game(WINDOW *parent)
                 }
             }
         }
-        wrefresh(game_win);
+
+        char text [15];
+        snprintf(text, sizeof text, "Score: %d", score);
+        int x = pXMAX - strlen(text);
+        mvwprintw(parent, 0, x, "%s", text);
+        wnoutrefresh(parent);
+        wnoutrefresh(game_win);
+        doupdate();
     }
 
     delwin(game_win);

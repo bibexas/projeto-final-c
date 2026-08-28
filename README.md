@@ -5,6 +5,7 @@ O objetivo deste jogo passa por juntar blocos de valores iguais, deslizando-os n
 
 **Controlos:**
 Setas direcionais: mover os blocos 
+
 `q` - sair do jogo
 
 ## Compilação
