@@ -29,10 +29,11 @@ void add_random_block(int board[4][4])
     }
 }
 
-void merge_line(int linha[4])
+int merge_line(int linha[4])
 {
     int write_pos = 0;
     int merged[4] = {0};
+    int pontos = 0;
 
     for (int i = 0; i < 4; i++)
     {
@@ -49,6 +50,7 @@ void merge_line(int linha[4])
         {
             linha[write_pos - 1] = linha[write_pos - 1] * 2;
             merged[write_pos - 1] = 1;
+            pontos = pontos + linha[write_pos - 1];
         }
         else {
             linha[write_pos] = linha[i];
@@ -60,15 +62,17 @@ void merge_line(int linha[4])
     {
         linha[j] = 0;
     }
-    
+    return pontos;
 }
 
-void move_left(int board [4][4])
+int move_left(int board [4][4])
 {
+    int pontos = 0;
     for (int row = 0; row < 4; row++)
     {
-        merge_line(board[row]);
+        pontos = pontos + merge_line(board[row]);
     }
+    return pontos
 }
 
 void invert_line(int linha [4])
@@ -82,19 +86,21 @@ void invert_line(int linha [4])
   linha[2] = temp2;
 }
 
-void move_right(int board [4][4])
+int move_right(int board [4][4])
 {
+    int pontos = 0;
     for (int row = 0; row < 4; row++)
     {
         invert_line(board[row]);
-        merge_line(board[row]);
+        pontos = pontos + merge_line(board[row]);
         invert_line(board[row]);
-
     }
+    return pontos;
 }
 
-void move_up(int board [4][4])
+int move_up(int board [4][4])
 {
+    int pontos = 0;
     for (int col = 0; col < 4; col++)
     {
         int coluna_temp[4];
@@ -102,16 +108,18 @@ void move_up(int board [4][4])
         {
             coluna_temp[i] = board[i][col];
         }
-        merge_line(coluna_temp);
+        pontos = pontos + merge_line(coluna_temp);
         for (int i = 0; i < 4; i++)
         {
             board[i][col] = coluna_temp[i];
         }
     }
+    return pontos;
 }
 
-void move_down(int board [4][4])
+int move_down(int board [4][4])
 {
+    int pontos = 0;
     for (int col = 0; col < 4; col++)
     {
         int coluna_temp[4];
@@ -120,11 +128,12 @@ void move_down(int board [4][4])
             coluna_temp[i] = board[i][col];
         }
         invert_line(coluna_temp);
-        merge_line(coluna_temp);
+        pontos = pontos + merge_line(coluna_temp);
         invert_line(coluna_temp);
         for (int i = 0; i < 4; i++)
         {
             board[i][col] = coluna_temp[i];
         }
     }
+    return pontos;
 }
