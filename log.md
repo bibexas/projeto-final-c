@@ -70,3 +70,17 @@ Próximo passo planeado:
 - Adicionar a verificação de vitória
 
 Linhas de código escritas: 64
+
+##Sessão 5 - 28/08/2026
+
+Funcionalidades implementadas hoje:
+- Fiz as funções que permitem ao jogador controlar o tabuleiro utilizando as setas do computador
+- Liguei as funções ao jogo em si e criei as condições para o terminal verificar, após cada movimento, se algo tinha mudado de forma a acrescentar um bloco random no board
+
+Maior dificuldade encontrada e como resolvi:
+- 
+
+Próximo passo planeado:
+-
+
+Linhas de código escritas:

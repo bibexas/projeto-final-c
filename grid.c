@@ -62,3 +62,69 @@ void merge_line(int linha[4])
     }
     
 }
+
+void move_left(int board [4][4])
+{
+    for (int row = 0; row < 4; row++)
+    {
+        merge_line(board[row]);
+    }
+}
+
+void invert_line(int linha [4])
+{
+  int temp = linha[0];  
+  linha[0] = linha [3]; 
+  linha [3] = temp;
+
+  int temp2 = linha[1];
+  linha[1] = linha[2];
+  linha[2] = temp2;
+}
+
+void move_right(int board [4][4])
+{
+    for (int row = 0; row < 4; row++)
+    {
+        invert_line(board[row]);
+        merge_line(board[row]);
+        invert_line(board[row]);
+
+    }
+}
+
+void move_up(int board [4][4])
+{
+    for (int col = 0; col < 4; col++)
+    {
+        int coluna_temp[4];
+        for (int i = 0; i < 4; i++)
+        {
+            coluna_temp[i] = board[i][col];
+        }
+        merge_line(coluna_temp);
+        for (int i = 0; i < 4; i++)
+        {
+            board[i][col] = coluna_temp[i];
+        }
+    }
+}
+
+void move_down(int board [4][4])
+{
+    for (int col = 0; col < 4; col++)
+    {
+        int coluna_temp[4];
+        for (int i = 0; i < 4; i++)
+        {
+            coluna_temp[i] = board[i][col];
+        }
+        invert_line(coluna_temp);
+        merge_line(coluna_temp);
+        invert_line(coluna_temp);
+        for (int i = 0; i < 4; i++)
+        {
+            board[i][col] = coluna_temp[i];
+        }
+    }
+}

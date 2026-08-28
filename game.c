@@ -59,6 +59,62 @@ void start_game(WINDOW *parent)
     int ch;
     while ((ch = wgetch(game_win)) != 'q')
     {
+        int board_antes[4][4];
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                board_antes[row][col] = board[row][col];
+            }
+        }
+        if (ch == KEY_LEFT)
+        {
+            move_left(board);
+        }
+        else if (ch == KEY_RIGHT)
+        {
+            move_right(board);
+        }
+        else if (ch == KEY_UP)
+        {
+            move_up(board);
+        }
+        else if (ch == KEY_DOWN)
+        {
+            move_down(board);
+        }
+
+        int mudou = 0;
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                if (board[row][col] != board_antes[row][col])
+                {
+                    mudou = 1;
+                }
+            }
+        }
+
+        if (mudou == 1)
+        {
+            add_random_block(board);
+        }
+
+        wclear(game_win);
+        draw_board(game_win, 4, 4);
+
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                if (board[row][col] !=0)
+                {
+                    block_draw(game_win, row, col, board[row][col]);
+                }
+            }
+        }
+        wrefresh(game_win);
     }
 
     delwin(game_win);
