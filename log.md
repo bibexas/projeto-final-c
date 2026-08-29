@@ -87,3 +87,15 @@ Próximo passo planeado:
 - Criar o highscore e um file txt. onde estes fiquem guardados (se calhar com a data, estou indecisa entre isso ou só com o nome)
 
 Linhas de código escritas: 200 - 230
+
+##Sessão 6 - 29/08/2026
+
+Funcionalidades implementadas hoje:
+- Verificação de derrota 
+- Adicionei um GAME OVER em ASCII Art, de forma a dar mais destaque
+
+Maior dificuldade encontrada e como resolvi:
+
+Próximo passo planeado:
+
+Linhas de código escritas:

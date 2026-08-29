@@ -7,7 +7,7 @@
 #include "game.h"
 #include "block.h"
 #include "grid.h"
-
+#include "end.h"
 
 void start_game(WINDOW *parent)
 {
@@ -29,7 +29,6 @@ void start_game(WINDOW *parent)
 
     int starty = (pYMAX - height) / 2;
     int startx = (pXMAX - width) / 2;
-
 
     WINDOW *game_win = derwin(parent, height, width, starty, startx);
     if (game_win == NULL)
@@ -104,28 +103,50 @@ void start_game(WINDOW *parent)
             add_random_block(board);
         }
 
-        wclear(game_win);
+        werase(game_win);
         draw_board(game_win, 4, 4);
 
         for (int row = 0; row < 4; row++)
         {
             for (int col = 0; col < 4; col++)
             {
-                if (board[row][col] !=0)
+                if (board[row][col] != 0)
                 {
                     block_draw(game_win, row, col, board[row][col]);
                 }
             }
         }
 
-        char text [15];
+        char text[15];
         snprintf(text, sizeof text, "Score: %d", score);
         int x = pXMAX - strlen(text);
         mvwprintw(parent, 0, x, "%s", text);
         wnoutrefresh(parent);
         wnoutrefresh(game_win);
         doupdate();
+
+        if (is_game_over(board) == 1)
+        {
+            break;
+        }
     }
 
+    const char *game_over_art[] =  
+    {
+    " ___   _   __  __ ___    _____   _____ ___ ",
+    "/ __| /_\\ |  \\/  | __|  / _ \\ \\ / / __| _ \\",
+    "| (_ |/ _ \\| |\\/| | _|  | (_) \\ V /| _||   /",
+    " \\___/_/ \\_\\_|  |_|___|  \\___/ \\_/ |___|_|_\\"
+    };
+    for (int i = 0; i < 4; i++)
+    {
+        int x = (pXMAX - strlen(game_over_art[i])) / 2;
+        mvwprintw(parent, i, x, "%s", game_over_art[i]);
+    }
+    wnoutrefresh(parent);
+    wnoutrefresh(game_win);
+    doupdate();
+
+    wgetch(game_win);
     delwin(game_win);
 }
