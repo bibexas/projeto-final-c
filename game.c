@@ -8,8 +8,9 @@
 #include "block.h"
 #include "grid.h"
 #include "end.h"
+#include "scores.h"
 
-int start_game(WINDOW *parent)
+int start_game(WINDOW *parent, const char *username)
 {
     werase(parent);
     box(parent, 0, 0);
@@ -134,7 +135,7 @@ int start_game(WINDOW *parent)
             break;
         }
     }
-
+    save_score(username, score);
     const char *game_over_art[] =  
     {
     " ___   _   __  __ ___    _____   _____ ___ ",

@@ -4,6 +4,7 @@
 #include "board.h"
 #include "game.h"
 #include "block.h"
+#include "scores.h"
 
 int main(void)
 {
@@ -19,6 +20,9 @@ int main(void)
     werase(parent);
     box(parent, 0, 0);
     wrefresh(parent);
+
+    char username[50] = "Jogador";
+    ask_username(parent, username, sizeof username);
 
 int estado = 0;
 int a_jogar = 1;
@@ -36,10 +40,14 @@ while (a_jogar == 1)
         {
             a_jogar = 0;
         }
+        else if (opcao == 2)
+        {
+            show_leaderboard(parent);
+        }
     }
     else if (estado == 1)
     {
-        opcao = start_game(parent);
+        opcao = start_game(parent, username);
         if (opcao == 2)
         {
             estado = 0;

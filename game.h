@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 
-int start_game(WINDOW *parent);
+int start_game(WINDOW *parent, const char *username);
 void block_init_colours(void);
 
 #endif

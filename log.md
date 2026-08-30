@@ -108,9 +108,10 @@ Linhas de código escritas: 50 - 80
 
 Funcionalidades implementadas hoje:
 - Mini menu após perder o jogo que permite recomeçar, voltar ao menu, ou sair
+- Leaderboard com o nome do jogador, score, data e hora do jogo
 
 Maior dificuldade encontrada e como resolvi:
-- Para este mini menu tive de o incorporar no que já tinha anteriormente. Escrever este ciclo while foi trabalhoso e, acima de tudo, confuso, por estar a trabalhar com duas variáveis ao mesmo tempo
+- Para o mini menu tive de o incorporar no que já tinha anteriormente. Escrever este ciclo while foi trabalhoso e, acima de tudo, confuso, por estar a trabalhar com duas variáveis ao mesmo tempo
 
 Próximo passo planeado:
 
