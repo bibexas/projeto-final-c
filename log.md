@@ -95,7 +95,23 @@ Funcionalidades implementadas hoje:
 - Adicionei um GAME OVER em ASCII Art, de forma a dar mais destaque
 
 Maior dificuldade encontrada e como resolvi:
+- Estava a ter alguma dificuldade em utilizar uma ASCII ART que coubesse nos limites da janela mas, após investigar diferentes sites, acabei por encontrar uma versão do Game Over que acho que está exatamente como eu queria
+
+Próximo passo planeado:
+- Tratar da leaderboard
+- Criar um pequeno menu no fim do jogo que permite ao jogador recomeçar o jogo, voltar ao menu, ou sair 
+- Verificação de vitória
+
+Linhas de código escritas: 50 - 80
+
+##Sessão 7 - 30/08/2026
+
+Funcionalidades implementadas hoje:
+- Mini menu após perder o jogo que permite recomeçar, voltar ao menu, ou sair
+
+Maior dificuldade encontrada e como resolvi:
+- Para este mini menu tive de o incorporar no que já tinha anteriormente. Escrever este ciclo while foi trabalhoso e, acima de tudo, confuso, por estar a trabalhar com duas variáveis ao mesmo tempo
 
 Próximo passo planeado:
 
-Linhas de código escritas:
+Linhas de código escritas: 

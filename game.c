@@ -9,8 +9,12 @@
 #include "grid.h"
 #include "end.h"
 
-void start_game(WINDOW *parent)
+int start_game(WINDOW *parent)
 {
+    werase(parent);
+    box(parent, 0, 0);
+    wnoutrefresh(parent);
+    doupdate();
     int pYMAX, pXMAX;
     getmaxyx(parent, pYMAX, pXMAX);
 
@@ -32,7 +36,7 @@ void start_game(WINDOW *parent)
 
     WINDOW *game_win = derwin(parent, height, width, starty, startx);
     if (game_win == NULL)
-        return;
+        return 2;
 
     int board[4][4] = {{0}};
     int score = 0;
@@ -141,12 +145,43 @@ void start_game(WINDOW *parent)
     for (int i = 0; i < 4; i++)
     {
         int x = (pXMAX - strlen(game_over_art[i])) / 2;
-        mvwprintw(parent, i, x, "%s", game_over_art[i]);
+        mvwprintw(parent, i + 1, x, "%s", game_over_art[i]);
     }
+
+    char endscore [15];
+    snprintf(endscore, sizeof endscore, "Score: %d", score);
+    int x = (pXMAX - strlen(endscore)) / 2;
+    mvwprintw(parent, 7, x, "%s", endscore);
+    mvwprintw(game_win, 4, 2, "R - Recomecar");
+    mvwprintw(game_win, 6, 2, "M - Voltar ao menu");
+    mvwprintw(game_win, 8, 2, "Q - Sair do jogo");
+
     wnoutrefresh(parent);
     wnoutrefresh(game_win);
     doupdate();
 
-    wgetch(game_win);
+    int escolha = 0;
+    while (1)
+    {
+        int ch = wgetch(game_win);
+
+        if (ch == 'r')
+        {
+            escolha = 1;
+            break;
+        }
+        else if (ch == 'm')
+        {
+            escolha = 2;
+            break;
+        }
+        else if (ch == 'q')
+        {
+            escolha = 3;
+            break;
+        }
+    }
+
     delwin(game_win);
+    return escolha;
 }

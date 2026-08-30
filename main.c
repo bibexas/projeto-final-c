@@ -20,17 +20,36 @@ int main(void)
     box(parent, 0, 0);
     wrefresh(parent);
 
-    int opcao = show_menu();
-
-    if (opcao == 1)
+int estado = 0;
+int a_jogar = 1;
+int opcao;
+while (a_jogar == 1)
+{
+    if (estado == 0)
     {
-        start_game(parent);
+        opcao = show_menu();
+        if (opcao == 1)
+        {
+            estado = 1;
+        }
+        else if (opcao == 3)
+        {
+            a_jogar = 0;
+        }
     }
-    else if (opcao == 2)
+    else if (estado == 1)
     {
-        endwin();
-        return 0;
+        opcao = start_game(parent);
+        if (opcao == 2)
+        {
+            estado = 0;
+        }
+        else if (opcao == 3)
+        {
+            a_jogar = 0;
+        }
     }
+}
 
     endwin();
     return 0;
