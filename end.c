@@ -30,3 +30,18 @@ int is_game_over(int board[4][4])
         return 1;
     }
 }
+
+int check_win(int board[4][4])
+{
+    for (int row = 0; row < 4; row++)
+    {
+        for (int col = 0; col < 4; col++)
+        {
+            if (board[row][col] == 2048)
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

@@ -40,6 +40,7 @@ int start_game(WINDOW *parent, const char *username)
         return 2;
 
     int board[4][4] = {{0}};
+    int highscore = get_highscore();
     int score = 0;
     srand((unsigned int)time(NULL));
     add_random_block(board);
@@ -54,6 +55,17 @@ int start_game(WINDOW *parent, const char *username)
                 block_draw(game_win, row, col, board[row][col]);
         }
     }
+
+    char text[15];
+    snprintf(text, sizeof text, "Score: %d", score);
+    int y = pXMAX - strlen(text) - 2;
+    mvwprintw(parent, 3, y, "%s", text);
+    char htext[20];
+    snprintf(htext, sizeof htext, "Highscore: %d", highscore);
+    int hy = pXMAX - strlen(htext) - 2;
+    mvwprintw(parent, 1, hy, "%s", htext);
+    wnoutrefresh(parent);
+    wnoutrefresh(game_win);
 
     touchwin(parent);
 
@@ -124,13 +136,21 @@ int start_game(WINDOW *parent, const char *username)
 
         char text[15];
         snprintf(text, sizeof text, "Score: %d", score);
-        int x = pXMAX - strlen(text);
-        mvwprintw(parent, 0, x, "%s", text);
+        int x = pXMAX - strlen(text) - 2;
+        mvwprintw(parent, 3, x, "%s", text);
+        char htext[20];
+        snprintf(htext, sizeof htext, "Highscore: %d", highscore);
+        int hx = pXMAX - strlen(htext) - 2;
+        mvwprintw(parent, 1, hx, "%s", htext);
         wnoutrefresh(parent);
         wnoutrefresh(game_win);
         doupdate();
 
         if (is_game_over(board) == 1)
+        {
+            break;
+        }
+        if (check_win(board) == 1)
         {
             break;
         }
@@ -156,7 +176,12 @@ int start_game(WINDOW *parent, const char *username)
     mvwprintw(game_win, 4, 2, "R - Recomecar");
     mvwprintw(game_win, 6, 2, "M - Voltar ao menu");
     mvwprintw(game_win, 8, 2, "Q - Sair do jogo");
-
+    
+    if (score > highscore)
+    {
+        mvwprintw(parent, 9, (pXMAX - 15) / 2, "Novo Highscore!");
+    }
+    
     wnoutrefresh(parent);
     wnoutrefresh(game_win);
     doupdate();

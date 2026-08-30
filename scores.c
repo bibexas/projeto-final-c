@@ -84,3 +84,24 @@ void ask_username(WINDOW *parent, char *username, int max_len)
     noecho();
     curs_set(0);
 }
+
+int get_highscore(void)
+{
+    FILE *f = fopen("scores.txt", "r");
+    if (f == NULL)
+    {
+        return 0;
+    }
+    char nome[50], data[20], hora[20];
+    int score, maior = 0;
+
+    while(fscanf(f, "%49s %d %19s %19s", nome, &score, data, hora) == 4)
+    {
+        if (score > maior)
+        {
+            maior = score;
+        }
+    }
+    fclose(f);
+    return maior;
+}

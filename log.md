@@ -109,10 +109,13 @@ Linhas de código escritas: 50 - 80
 Funcionalidades implementadas hoje:
 - Mini menu após perder o jogo que permite recomeçar, voltar ao menu, ou sair
 - Leaderboard com o nome do jogador, score, data e hora do jogo
+- Adicionei a verificação de vitória
+- Coloquei o highscore por cima do score, para ser visível durante o jogo
 
 Maior dificuldade encontrada e como resolvi:
 - Para o mini menu tive de o incorporar no que já tinha anteriormente. Escrever este ciclo while foi trabalhoso e, acima de tudo, confuso, por estar a trabalhar com duas variáveis ao mesmo tempo
 
 Próximo passo planeado:
+- Limpar e organizar o código
 
-Linhas de código escritas: 
+Linhas de código escritas: 200 - 250
