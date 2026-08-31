@@ -52,7 +52,7 @@ int start_game(WINDOW *parent, const char *username)
         for (int col = 0; col < 4; col++)
         {
             if (board[row][col] != 0)
-                block_draw(game_win, row, col, board[row][col]);
+                block_draw(game_win, row, col, board[row][col], 1);
         }
     }
 
@@ -129,7 +129,7 @@ int start_game(WINDOW *parent, const char *username)
             {
                 if (board[row][col] != 0)
                 {
-                    block_draw(game_win, row, col, board[row][col]);
+                    block_draw(game_win, row, col, board[row][col], 1);
                 }
             }
         }
@@ -163,23 +163,39 @@ int start_game(WINDOW *parent, const char *username)
     "| (_ |/ _ \\| |\\/| | _|  | (_) \\ V /| _||   /",
     " \\___/_/ \\_\\_|  |_|___|  \\___/ \\_/ |___|_|_\\"
     };
+    werase(parent);
+    box(parent, 0, 0);
+    werase(game_win);
+    draw_board(game_win, 4, 4);
+    for (int row = 0; row < 4; row++)
+    {
+        for (int col = 0; col < 4; col++)
+        {
+            if (board[row][col] != 0)
+            {
+                block_draw(game_win, row, col, board[row][col], 0);
+            }
+        }
+    }
+
+
     for (int i = 0; i < 4; i++)
     {
         int x = (pXMAX - strlen(game_over_art[i])) / 2;
         mvwprintw(parent, i + 1, x, "%s", game_over_art[i]);
     }
-
+    
     char endscore [15];
     snprintf(endscore, sizeof endscore, "Score: %d", score);
     int x = (pXMAX - strlen(endscore)) / 2;
     mvwprintw(parent, 7, x, "%s", endscore);
-    mvwprintw(game_win, 4, 2, "R - Recomecar");
-    mvwprintw(game_win, 6, 2, "M - Voltar ao menu");
-    mvwprintw(game_win, 8, 2, "Q - Sair do jogo");
+    mvwprintw(parent, 19, 15, "R - Recomecar");
+    mvwprintw(parent, 21, 15, "M - Voltar ao menu");
+    mvwprintw(parent, 23, 15, "Q - Sair do jogo");
     
     if (score > highscore)
     {
-        mvwprintw(parent, 9, (pXMAX - 15) / 2, "Novo Highscore!");
+        mvwprintw(parent, 11, (pXMAX - 15) / 2, "Novo Highscore!");
     }
     
     wnoutrefresh(parent);

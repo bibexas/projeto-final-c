@@ -3,6 +3,6 @@
 
 #include <ncurses.h>
 
-void block_draw(WINDOW *win, int row, int col, int value);
+void block_draw(WINDOW *win, int row, int col, int value, int usar_cor);
 
 #endif

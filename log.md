@@ -119,3 +119,15 @@ Próximo passo planeado:
 - Limpar e organizar o código
 
 Linhas de código escritas: 200 - 250
+
+##Sessão 8 - 31/08/2026
+
+Funcionalidades implementadas hoje:
+- Limpeza e organização de código
+- Reorganizar a posição do menu final
+- Tirar a cor aos blocos após o jogo terminar, de forma a dar mais destaque aos novos elementos (menu, score final)
+
+Maior dificuldade encontrada e como resolvi: 
+Nesta etapa já não tive nenhuma grande dificuldade, dado que foram ajustes que fiz ao código que já existia
+
+Linhas de código escritas: 5 - 10

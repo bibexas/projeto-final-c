@@ -26,18 +26,15 @@ int show_menu(void)
 
         if (ch == '1')
         {
-            choice = 1;
-            break;
+            choice = 1; break;
         }
         else if (ch == '2')
         {
-            choice = 2;
-            break;
+            choice = 2; break;
         }
         else if (ch == '3' || ch == 'q' || ch == 'Q')
         {
-            choice = 3;
-            break;
+            choice = 3; break;
         }
     }
     wclear(win);

@@ -13,30 +13,18 @@ static short block_colour(int value)
 {
     switch (value)
     {
-    case 2:
-        return 1;
-    case 4:
-        return 2;
-    case 8:
-        return 3;
-    case 16:
-        return 4;
-    case 32:
-        return 5;
-    case 64:
-        return 6;
-    case 128:
-        return 7;
-    case 256:
-        return 8;
-    case 512:
-        return 9;
-    case 1024:
-        return 10;
-    case 2048:
-        return 11;
-    default:
-        return 0;
+    case 2: return 1;
+    case 4: return 2;
+    case 8: return 3;
+    case 16: return 4;
+    case 32: return 5;
+    case 64: return 6;
+    case 128: return 7;
+    case 256: return 8;
+    case 512: return 9;
+    case 1024: return 10;
+    case 2048: return 11;
+    default: return 0;
     }
 }
 
@@ -52,7 +40,7 @@ void block_init_colours(void)
     init_pair(3, COLOR_WHITE, COLOR_RED);
     init_pair(4, COLOR_WHITE, COLOR_MAGENTA);
     init_pair(5, COLOR_WHITE, COLOR_BLUE);
-    init_pair(6, COLOR_WHITE, COLOR_GREEN);
+    init_pair(6, COLOR_WHITE, COLOR_BLACK);
     init_pair(7, COLOR_BLACK, COLOR_CYAN);
     init_pair(8, COLOR_BLACK, COLOR_GREEN);
     init_pair(9, COLOR_WHITE, COLOR_RED);
@@ -60,7 +48,7 @@ void block_init_colours(void)
     init_pair(11, COLOR_BLACK, COLOR_WHITE);
 }
 
-void block_draw(WINDOW *win, int row, int col, int value)
+void block_draw(WINDOW *win, int row, int col, int value, int usar_cor)
 {
     int height, width, cell_height, cell_width;
     int inner_h, inner_w;
@@ -83,7 +71,7 @@ void block_draw(WINDOW *win, int row, int col, int value)
 
     snprintf(text, sizeof text, "%d", value);
 
-    if (has_colors())
+    if (has_colors() && usar_cor)
         wattron(win, COLOR_PAIR(block_colour(value)));
     for (int yy = 0; yy < cell_height; ++yy)
         mvwhline(win, y + yy, x, ' ', cell_width);
@@ -92,7 +80,7 @@ void block_draw(WINDOW *win, int row, int col, int value)
     text_x = x + (cell_width - (int)strlen(text)) / 2;
     if (text_y < height && text_x >= x && text_x + (int)strlen(text) <= x + cell_width)
         mvwprintw(win, text_y, text_x, "%s", text);
-    if (has_colors())
+    if (has_colors() && usar_cor)
         wattroff(win, COLOR_PAIR(block_colour(value)));
 }
 
